@@ -1,5 +1,7 @@
 ## Intro
 
+中文讨论请前往：https://phphub.org/topics/2301
+
 Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Laravel-Administrator) with the following changes:
 
 * UI Improved
