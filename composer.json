@@ -1,17 +1,17 @@
 {
 	"name": "summerblue/administrator",
-	"description": "A database interface package for Laravel",
-	"homepage": "http://administrator.frozennode.com",
+	"description": "A database interface package for Laravel, modified!",
+	"homepage": "https://github.com/summerblue/administrator",
 	"keywords": ["administrator", "admin", "database", "laravel-administrator", "laravel", "cms"],
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Jan Hartigan",
-			"email": "jan@frozennode.com"
+			"name": "Original: Jan Hartigan, modified by CJ",
+			"email": "cj@estgroupe.com"
 		}
 	],
 	"support": {
-		"issues": "https://github.com/FrozenNode/Laravel-Administrator/issues"
+		"issues": "https://github.com/summerblue/administrator/issues"
 	},
 	"require": {
 		"php": ">=5.4.0",
