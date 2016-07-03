@@ -1,3 +1,18 @@
+## intro
+
+Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Laravel-Administrator) with the following changes:
+
+* UI Improved
+* UX Improved (Editor view stick, hover effect etc.)
+* Model deletion with Sweet alert confirmation
+* Batch model deletion
+* Refresh btn
+* Reduce page css and js file request number
+
+![image](https://cloud.githubusercontent.com/assets/324764/16544335/da35e066-4134-11e6-8a40-db2ad9753a4f.png)
+
+![image](https://cloud.githubusercontent.com/assets/324764/16544336/e7e1a02e-4134-11e6-8dc0-f63ad57a5d14.png)
+
 # Laravel Administrator
 
 Administrator is an administrative interface builder for [Laravel](http://laravel.com). With Administrator you can visually manage your Eloquent models and their relations, and also create stand-alone settings pages for storing site data and performing site tasks.
