@@ -13,9 +13,9 @@ Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Lar
 
 > only intent to support Laravel 5.1.*
 
-![image](https://cloud.githubusercontent.com/assets/324764/16544335/da35e066-4134-11e6-8a40-db2ad9753a4f.png)
+![1](https://cloud.githubusercontent.com/assets/324764/16544619/6db648d0-413f-11e6-8842-bf0b993416ef.png)
 
-![image](https://cloud.githubusercontent.com/assets/324764/16544336/e7e1a02e-4134-11e6-8dc0-f63ad57a5d14.png)
+![2](https://cloud.githubusercontent.com/assets/324764/16544623/72a8c0ac-413f-11e6-9c5b-0259b07a7c37.png)
 
 ## Install
 
