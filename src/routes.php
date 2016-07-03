@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(array('domain' => config('administrator.domain'), 'prefix' => config('administrator.uri'), 'middleware' => 'Frozennode\Administrator\Http\Middleware\ValidateAdmin'), function () {
 
     // hack by @Monkey: for custom route
-    Route::group(['prefix' => 'custom'], function () {
-        require config('administrator.custom_routes_file');
-    });
+    // Route::group(['prefix' => 'custom'], function () {
+    //     require config('administrator.custom_routes_file');
+    // });
 
     //Admin Dashboard
     Route::get('/', array(

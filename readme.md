@@ -22,23 +22,23 @@ Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Lar
 ### 1. composer require
 
 ```
-composer require "summerblue/administrator@^1.0"
+composer require "summerblue/administrator:^1.0"
 ```
 
-### 2. publish assets/config
-
-```
-php artisan vendor:publish
-```
-
-### 3. add provider
+### 2. add provider
 
 Edit `config/app.php` in `providers` array add provider:
 
 ```php
 'providers' => [
-	'Frozennode\Administrator\AdministratorServiceProvider',
+	Frozennode\Administrator\AdministratorServiceProvider::class,
 ]
+```
+
+### 3. publish assets/config
+
+```
+php artisan vendor:publish
 ```
 
 Read the docs: http://administrator.frozennode.com
