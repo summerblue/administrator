@@ -10,6 +10,7 @@ Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Lar
 * Batch model deletion
 * Refresh btn
 * Reduce page css and js file request number
+* Edit view hint
 
 > only intent to support Laravel 5.1.*
 
