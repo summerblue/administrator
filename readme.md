@@ -1,6 +1,8 @@
 ## Intro
 
-中文讨论请前往：https://phphub.org/topics/2301
+* 中文讨论请前往：https://phphub.org/topics/2301
+* 中文教程见这里：https://phphub.org/topics/2407
+
 
 Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Laravel-Administrator) with the following changes:
 
