@@ -6,7 +6,7 @@
 </div>
 
 <script type="text/javascript">
-	var site_url = "<?php echo url() ?>",
+	var site_url = "<?php echo Request::url() ?>",
 		base_url = "<?php echo $baseUrl ?>/",
 		asset_url = "<?php echo $assetUrl ?>",
 		file_url = "<?php echo route('admin_display_file', array($config->getOption('name'))) ?>",
@@ -38,8 +38,8 @@
 			action_permissions: <?php echo json_encode($actionPermissions) ?>,
 			languages: <?php echo json_encode(trans('administrator::knockout')) ?>,
 			// hack by @Monkey: for paging logic
-			filter_by: "<?php echo Input::get('filter_by') ?>",
-			filter_by_id: <?php echo (int) Input::get('filter_by_id') ?>
+			filter_by: "<?php echo Request::get('filter_by') ?>",
+			filter_by_id: <?php echo (int) Request::get('filter_by_id') ?>
 		};
 </script>
 
