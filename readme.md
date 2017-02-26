@@ -41,7 +41,7 @@ Edit `config/app.php` in `providers` array add provider:
 ### 3. publish assets/config
 
 ```
-php artisan vendor:publish
+php artisan vendor:publish --provider="Frozennode\Administrator\AdministratorServiceProvider"
 ```
 
 Read the docs: http://administrator.frozennode.com
