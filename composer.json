@@ -14,12 +14,13 @@
 		"issues": "https://github.com/summerblue/administrator/issues"
 	},
 	"require": {
-		"php": ">=5.4.0",
-		"laravel/framework": "5.*",
+		"php": ">=7.0.0",
+		"laravel/framework": "5.5.*",
 		"ckeditor/ckeditor": "4.*"
 	},
 	"require-dev": {
-		"mockery/mockery": "~0.9"
+		"mockery/mockery": "~0.9",
+		"phpunit/phpunit": "~5.7.12"
 	},
 	"autoload": {
 		"classmap": [
@@ -36,5 +37,12 @@
 			"if [ -d \"vendor/ckeditor/\" ] \nthen \nrm -R vendor/ckeditor/ \nfi"
 		]
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Frozennode\\Administrator\\AdministratorServiceProvider"
+			]
+		}
+	}
 }

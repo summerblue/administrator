@@ -59,10 +59,10 @@ class Validator extends \Illuminate\Validation\Validator
      *
      * @param array $rules
      */
-    public function setRules(array $rules)
+    /*public function setRules(array $rules)
     {
         $this->rules = $this->explodeRules($rules);
-    }
+    }*/
 
     /**
      * Mimic of the Laravel array_get helper.
@@ -170,7 +170,7 @@ class Validator extends \Illuminate\Validation\Validator
     /**
      * Validate that an attribute is a string.
      */
-    protected function validateString($attribute, $value)
+    public function validateString($attribute, $value)
     {
         return is_string($value);
     }
