@@ -34,7 +34,7 @@ Forked from [FrozenNode/Laravel-Administrator](https://github.com/FrozenNode/Lar
 ### 1. composer require
 
 ```
-composer require "summerblue/administrator:^1.0"
+composer require "summerblue/administrator:^1.1"
 ```
 
 ### 2. add provider

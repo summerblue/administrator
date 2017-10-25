@@ -21,7 +21,7 @@ return array(
      *
      * @type string
      */
-    'title' => 'EST 官网管理',
+    'title' => config('app.name'),
 
     /*
      * The path to your model config directory
@@ -58,7 +58,7 @@ return array(
      * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
      *	)
      */
-    'menu' => array(),
+    'menu' => [],
 
     /*
      * The permission option is the highest-level authentication check that lets you define a closure that should return true if the current user
@@ -104,7 +104,7 @@ return array(
      *
      * @type string
      */
-    'login_path' => 'auth/login',
+    'login_path' => 'login',
 
     /*
      * The logout path is the path where Administrator will send the user when they click the logout link
@@ -133,7 +133,7 @@ return array(
      *
      * @type array
      */
-    'locales' => array(),
+    'locales' => [],
 
     'custom_routes_file' => app_path('Http/routes/administrator.php'),
 );

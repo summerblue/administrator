@@ -3,6 +3,7 @@
 namespace Frozennode\Administrator;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Frozennode\Administrator\DataTable\DataTable;
 use Illuminate\Support\Facades\Validator as LValidator;
@@ -54,7 +55,13 @@ class AdministratorServiceProvider extends ServiceProvider
     {
         //include our view composers, and routes to avoid issues with catch-all routes defined by users
         include __DIR__.'/../../viewComposers.php';
-        include __DIR__.'/../../routes.php';
+        
+        // Load route with web middleware 
+        Route::group([
+            'middleware' => 'web',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../../routes.php');
+        });
 
         //the admin validator
         $this->app->singleton('admin_validator', function ($app) {
