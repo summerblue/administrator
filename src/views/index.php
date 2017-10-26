@@ -25,7 +25,7 @@
 			rows_per_page: <?php echo $dataTable->getRowsPerPage() ?>,
 			sortOptions: <?php echo json_encode($dataTable->getSort()) ?>,
 			model_name: "<?php echo $config->getOption('name') ?>",
-			model_title: "<?php echo $config->getOption('heading') ?>",
+			model_title: "<?php echo $config->getOption('title') ?>",
 			sub_title: '<?php echo $config->getOption('subtitle', '') ?>',
 			model_single: "<?php echo $config->getOption('single') ?>",
 			expand_width: <?php echo $formWidth ?>,
