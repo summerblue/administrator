@@ -1,5 +1,6 @@
 <form class="settings_form" data-bind="submit: save">
-	<h2 data-bind="text: $root.settingsTitle"></h2>
+	<h2 class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> 站点设置</h2>
+    <hr>
 
 	<!-- ko foreach: editFields -->
 		<!-- ko if: $data && editable && visible -->
@@ -9,7 +10,7 @@
 			<!-- ko if: type === 'text' -->
 				<!-- ko if: editable -->
 					<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-					<input type="text" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+					<input type="text" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
 																			valueUpdate: 'afterkeydown', characterLimit: limit" />
 				<!-- /ko -->
 				<!-- ko ifnot: editable -->
@@ -20,7 +21,7 @@
 			<!-- ko if: type === 'textarea' -->
 				<!-- ko if: editable -->
 					<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-					<textarea data-bind="attr: {disabled: $root.freezeForm || !editable, id: field_id}, value: $root[field_name],
+					<textarea class="form-control" data-bind="attr: {disabled: $root.freezeForm || !editable, id: field_id}, value: $root[field_name],
 																		valueUpdate: 'afterkeydown', characterLimit: limit,
 																		style: {height: height + 'px'}"></textarea>
 				<!-- /ko -->
@@ -38,7 +39,7 @@
 				<!-- ko if: editable -->
 					<div class="markdown_container" data-bind="style: {height: height + 'px'}">
 						<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-						<textarea data-bind="attr: {disabled: $root.freezeForm, id: field_id}, characterLimit: limit,
+						<textarea class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, characterLimit: limit,
 																		value: $root[field_name], valueUpdate: 'afterkeydown'"></textarea>
 						<div class="preview" data-bind="markdown: $root[field_name]"></div>
 					</div>
@@ -62,7 +63,7 @@
 			<!-- ko if: type === 'number' -->
 				<!-- ko if: editable -->
 					<span class="symbol" data-bind="text: symbol"></span>
-					<input type="text" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+					<input type="text" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
 												number: {decimals: decimals, key: field_name, thousandsSeparator: thousands_separator,
 														decimalSeparator: decimal_separator}" />
 				<!-- /ko -->
@@ -191,13 +192,16 @@
 	<!-- /ko -->
 
 	<div class="control_buttons">
-		<input type="submit" value="<?php echo trans('administrator::administrator.save') ?>"
+		<input type="submit" class="btn btn-w-m btn-primary" value="<?php echo trans('administrator::administrator.save') ?>"
 			data-bind="attr: {disabled: $root.freezeForm() || $root.freezeActions()}" />
 
+
 		<!-- ko if: actions().length -->
+            <hr>
+            <h2>其他操作</h2>
 			<!-- ko foreach: actions -->
 				<!-- ko if: has_permission -->
-					<input type="button" data-bind="click: function(){$root.customAction(action_name, messages, confirmation)}, value: title,
+					<input type="button" class="btn btn-w-m btn-info" data-bind="click: function(){$root.customAction(action_name, messages, confirmation)}, value: title,
 																	attr: {disabled: $root.freezeForm() || $root.freezeActions()}" />
 				<!-- /ko -->
 			<!-- /ko -->

@@ -796,3 +796,25 @@ table.results .label {
     background: #2196F3;
     color: #fff;
 }
+
+#settings_page {
+    width: 640px;
+    background: white;
+    padding: 20px;
+    margin: 80px auto;
+    box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.32);
+}
+
+#settings_page form.settings_form > div {
+    display: block;
+    margin-right: 12px;
+}
+#settings_page form.settings_form > div.control_buttons, #settings_page form.settings_form > div.image, #settings_page form.settings_form > div.wysiwyg, #settings_page form.settings_form > div.markdown, #settings_page form.settings_form > div.textarea {
+    margin-right: 12px;
+}
+#settings_page form.settings_form > div textarea {
+    width: 100%;
+}
+#settings_page form.settings_form {
+    text-shadow: none;
+}
