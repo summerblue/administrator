@@ -1,6 +1,6 @@
 <?php
 
-function settings($key, $default = '', $setting_name = 'site')
+function setting($key, $default = '', $setting_name = 'site')
 {
     if ( ! config()->get($setting_name)) {
         // Decode the settings to an associative array.
