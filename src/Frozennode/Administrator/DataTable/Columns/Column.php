@@ -62,6 +62,7 @@ class Column
         'external'        => false,
         'belongs_to_many' => false,
         'visible'         => true,
+        'raw_output'      => false,
     );
 
     /**
@@ -234,6 +235,12 @@ class Column
     public function renderOutput($value, $item = null)
     {
         $output = $this->getOption('output');
+
+        // default is xss secured untill u open `raw_output` option
+        // e() is laravel blade `{{ }}` for printing data
+        if ( ! $this->getOption('raw_output')) {
+            $value = e($value);
+        }
 
         if (is_callable($output)) {
             return $output($value, $item);
