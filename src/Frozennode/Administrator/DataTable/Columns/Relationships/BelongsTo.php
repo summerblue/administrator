@@ -29,8 +29,8 @@ class BelongsTo extends Relationship
         $this->tablePrefix = $this->db->getTablePrefix();
         $nested            = $this->getNestedRelationships($options['relationship']);
 
-        $relevantName      = $nested['pieces'][sizeof($nested['pieces']) - 1];
-        $relevantModel     = $nested['models'][sizeof($nested['models']) - 2];
+        $relevantName      = $nested['pieces'][!empty($nested['pieces']) - 1];
+        $relevantModel     = $nested['models'][!empty($nested['models']) - 2];
         $options['nested'] = $nested;
 
         $relationship = $relevantModel->{$relevantName}();
@@ -56,7 +56,7 @@ class BelongsTo extends Relationship
     {
         $pieces     = explode('.', $name);
         $models     = array();
-        $num_pieces = sizeof($pieces);
+        $num_pieces = !empty($pieces);
 
         //iterate over the relationships to see if they're all valid
         foreach ($pieces as $i => $rel) {
@@ -89,7 +89,7 @@ class BelongsTo extends Relationship
         $joins      = $where      = '';
         $columnName = $this->getOption('column_name');
         $nested     = $this->getOption('nested');
-        $num_pieces = sizeof($nested['pieces']);
+        $num_pieces = !empty($nested['pieces']);
 
         //if there is more than one nested relationship, we need to join all the tables
         if ($num_pieces > 1) {

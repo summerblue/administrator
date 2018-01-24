@@ -200,7 +200,7 @@ class Factory
     public function getColumns()
     {
         //make sure we only run this once and then return the cached version
-        if (!sizeof($this->columns)) {
+        if (empty($this->columns)) {
             foreach ($this->config->getOption('columns') as $name => $options) {
                 //if only a string value was supplied, may sure to turn it into an array
                 $object                                           = $this->make($this->parseOptions($name, $options));
@@ -219,7 +219,7 @@ class Factory
     public function getColumnOptions()
     {
         //make sure we only run this once and then return the cached version
-        if (!sizeof($this->columnOptions)) {
+        if (empty($this->columnOptions)) {
             foreach ($this->getColumns() as $column) {
                 $this->columnOptions[] = $column->getOptions();
             }
@@ -238,7 +238,7 @@ class Factory
     public function getIncludedColumns(array $fields)
     {
         //make sure we only run this once and then return the cached version
-        if (!sizeof($this->includedColumns)) {
+        if (empty($this->includedColumns)) {
             $model = $this->config->getDataModel();
 
             foreach ($this->getColumns() as $column) {
@@ -273,7 +273,7 @@ class Factory
     public function getRelatedColumns()
     {
         //make sure we only run this once and then return the cached version
-        if (!sizeof($this->relatedColumns)) {
+        if (empty($this->relatedColumns)) {
             foreach ($this->getColumns() as $column) {
                 if ($column->getOption('is_related')) {
                     $this->relatedColumns[$column->getOption('column_name')] = $column->getOption('column_name');
@@ -292,7 +292,7 @@ class Factory
     public function getComputedColumns()
     {
         //make sure we only run this once and then return the cached version
-        if (!sizeof($this->computedColumns)) {
+        if (empty($this->computedColumns)) {
             foreach ($this->getColumns() as $column) {
                 if (!$column->getOption('is_related') && $column->getOption('is_computed')) {
                     $this->computedColumns[$column->getOption('column_name')] = $column->getOption('column_name');
