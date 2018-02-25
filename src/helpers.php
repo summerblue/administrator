@@ -14,7 +14,9 @@ if (!function_exists('setting'))
         // Access a setting, supplying a default value
         return config()->get($setting_name.'.'.$key, $default);
     }
-} else {
+}
+
+if (!function_exists('admin_setting')) {
     function admin_setting($key, $default = '', $setting_name = 'site')
     {
         if ( ! config()->get($setting_name)) {
