@@ -360,7 +360,7 @@ class Factory
      */
     public function getEditFields($loadRelationships = true, $override = false)
     {
-        if (!sizeof($this->editFields) || $override) {
+        if (empty($this->editFields) || $override) {
             $this->editFields = array();
 
             //iterate over each supplied edit field
@@ -453,7 +453,7 @@ class Factory
         $configFilters = $this->config->getOption('filters');
 
         //make sure that the filters array hasn't been created before and that there are supplied filters in the config
-        if (!sizeof($this->filters) && $configFilters) {
+        if (empty($this->filters) && $configFilters) {
             //iterate over the filters and create field objects for them
             foreach ($configFilters as $name => $filter) {
                 if ($fieldObject = $this->make($name, $filter)) {
@@ -473,7 +473,7 @@ class Factory
      */
     public function getFiltersArrays()
     {
-        if (!sizeof($this->filtersArrays)) {
+        if (empty($this->filtersArrays)) {
             foreach ($this->getFilters() as $name => $filter) {
                 $this->filtersArrays[$name] = $filter->getOptions();
             }
@@ -548,7 +548,7 @@ class Factory
 
         //if this is an autocomplete field, check if there is a search term. If not, just return the selected items
         if ($fieldObject->getOption('autocomplete') && !$term) {
-            if (sizeof($selectedItems)) {
+            if (!empty($selectedItems)) {
                 $this->filterQueryBySelectedItems($query, $selectedItems, $fieldObject, $relatedKeyTable);
 
                 return $this->formatSelectOptions($fieldObject, $query->get());
@@ -653,11 +653,11 @@ class Factory
     {
         $configConstraints = $fieldObject->getOption('constraints');
 
-        if (sizeof($configConstraints)) {
+        if (!empty($configConstraints)) {
             //iterate over the config constraints
             foreach ($configConstraints as $key => $relationshipName) {
                 //now that we're looping through the constraints, check to see if this one was supplied
-                if (isset($constraints[$key]) && $constraints[$key] && sizeof($constraints[$key])) {
+                if (isset($constraints[$key]) && $constraints[$key] && !empty($constraints[$key])) {
                     //first we get the other model and the relationship field on it
                     $model        = $this->config->getDataModel();
                     $relatedModel = $model->{$fieldObject->getOption('field_name')}()->getRelated();
