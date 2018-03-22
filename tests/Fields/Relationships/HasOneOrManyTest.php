@@ -58,7 +58,8 @@ class HasOneOrManyTest extends \PHPUnit_Framework_TestCase
     public function testBuild()
     {
         $relatedModel = m::mock(array('getKeyName' => 'id', 'getTable' => 'other_table'));
-        $relationship = m::mock(array('getRelated' => $relatedModel, 'getForeignKey' => 'some_id', 'getPlainForeignKey' => 'some_other_id'));
+        $relationship = m::mock(array('getRelated' => $relatedModel, 'getForeignKey' => 'some_id',
+                                      'getPlainForeignKey' => 'some_other_id', 'getQualifiedForeignKeyName' => 'some_id'));
         $model        = m::mock(array('field' => $relationship, 'getTable' => 'table'));
         $this->config->shouldReceive('getDataModel')->twice()->andReturn($model);
         $this->validator->shouldReceive('arrayGet')->times(6);

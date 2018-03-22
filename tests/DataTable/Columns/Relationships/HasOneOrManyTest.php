@@ -58,7 +58,7 @@ class HasOneOrManyTest extends \PHPUnit_Framework_TestCase
 
     public function testFilterQuery()
     {
-        $relationship = m::mock(array('getPlainForeignKey' => '', 'getQualifiedParentKeyName' => 'table.column', 'getRelated' => m::mock(array('getTable' => 'table'))));
+        $relationship = m::mock(array('getForeignKeyName' => '', 'getPlainForeignKey' => '', 'getQualifiedParentKeyName' => 'table.column', 'getRelated' => m::mock(array('getTable' => 'table'))));
         $model        = m::mock(array('getTable' => 'table', 'getKeyName' => '', 'method' => $relationship));
         $grammar      = m::mock('Illuminate\Database\Query\Grammars');
         $grammar->shouldReceive('wrap')->once()->andReturn('');
