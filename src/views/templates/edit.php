@@ -1,3 +1,9 @@
+<style>
+    .plupload.html5 {
+        overflow: inherit!important;
+    }
+</style>
+
 <div data-bind="visible: loadingItem" class="loading"><?php echo trans('administrator::administrator.loading') ?></div>
 
 <form class="edit_form" data-bind="visible: !loadingItem(), submit: saveItem">
