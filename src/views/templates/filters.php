@@ -15,7 +15,7 @@
 			<!-- /ko -->
 
 			<!-- ko if: type === 'text' -->
-				<input type="text" class="form-control" data-bind="value: value, valueUpdate: 'afterkeydown', attr: {id: field_id}" />
+				<input type="text" class="form-control" autocomplete="new-password" data-bind="value: value, valueUpdate: 'afterkeydown', attr: {id: field_id}" />
 			<!-- /ko -->
 
 			<!-- ko if: type === 'color' -->

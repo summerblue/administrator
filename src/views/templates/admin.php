@@ -41,9 +41,13 @@
 			<span> <?php echo trans('administrator::administrator.itemsperpage') ?></span>
 		</div>
 		<div class="paginator">
+
+			<!-- ko if: $root.actionPermissions['delete'] !== false  -->
 			<a type="button" id="delete-all" class="btn btn-danger btn-sm disabled" data-bind="click: deleteItems">
 	            <i class="fa fa-trash" aria-hidden="true"></i> <?php echo trans('administrator::administrator.delete_all') ?>
 	        </a>
+	        <!-- /ko -->
+	        
 			Total: <span data-bind="text: pagination.total()"></span>&nbsp;&nbsp;
 			<input type="button" class="btn btn-outline btn-primary btn-xs" value="<?php echo trans('administrator::administrator.previous') ?>"
 					data-bind="attr: {disabled: pagination.isFirst() || !pagination.last() || !initialized() }, click: function() {page('prev')}" />
@@ -57,7 +61,10 @@
 	<table class="results table table-hover" border="0" cellspacing="0" id="customers" cellpadding="0">
 		<thead>
 			<tr>
+				<!-- ko if: $root.actionPermissions['delete'] !== false  -->
                 <th><label for="select-all" style="white-space:nowrap;"><input id="select-all" type="checkbox" value=""> </label></th>
+				<!-- /ko -->
+
 				<!-- ko foreach: columns -->
 					<th data-bind="visible: visible, css: {sortable: sortable,
 	'sorted-asc': (column_name == $root.sortOptions.field() || sort_field == $root.sortOptions.field()) && $root.sortOptions.direction() === 'asc',
@@ -77,8 +84,10 @@
 			<!-- ko foreach: rows -->
 				<tr data-bind="css: {result: true, even: $index() % 2 == 1, odd: $index() % 2 != 1,
 									selected: $data[$root.primaryKey].raw == $root.itemLoadingId()}">
-
+					
+					<!-- ko if: $root.actionPermissions['delete'] !== false  -->
 					<td><label for=""><input class="select-checkbox" data-bind="value:$data[$root.primaryKey].raw" type="checkbox"></td>
+					<!-- /ko -->
 
 					<!-- ko foreach: $root.columns -->
 

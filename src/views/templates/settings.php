@@ -1,3 +1,9 @@
+<style>
+    .plupload.html5 {
+        overflow: inherit!important;
+    }
+</style>
+
 <form class="settings_form" data-bind="submit: save">
 	<h2 class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> 站点设置</h2>
     <hr>
@@ -10,7 +16,7 @@
 			<!-- ko if: type === 'text' -->
 				<!-- ko if: editable -->
 					<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-					<input type="text" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+					<input type="text" class="form-control" autocomplete="new-password" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
 																			valueUpdate: 'afterkeydown', characterLimit: limit" />
 				<!-- /ko -->
 				<!-- ko ifnot: editable -->
@@ -52,7 +58,7 @@
             <!-- ko if: type === 'password' -->
                 <!-- ko if: editable -->
                     <div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-                    <input type="password" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+                    <input type="password" class="form-control" autocomplete="new-password" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
                                                 valueUpdate: 'afterkeydown', characterLimit: limit" />
                 <!-- /ko -->
                 <!-- ko ifnot: editable -->

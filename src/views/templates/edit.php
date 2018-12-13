@@ -1,3 +1,9 @@
+<style>
+    .plupload.html5 {
+        overflow: inherit!important;
+    }
+</style>
+
 <div data-bind="visible: loadingItem" class="loading"><?php echo trans('administrator::administrator.loading') ?></div>
 
 <form class="edit_form" data-bind="visible: !loadingItem(), submit: saveItem">
@@ -41,7 +47,7 @@
 			<!-- ko if: type === 'text' -->
 				<!-- ko if: editable -->
 					<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-					<input type="text" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+					<input type="text" class="form-control" autocomplete="new-password" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
 																			valueUpdate: 'afterkeydown', characterLimit: limit" />
 				<!-- /ko -->
 				<!-- ko ifnot: editable -->
@@ -83,7 +89,7 @@
 			<!-- ko if: type === 'password' -->
 				<!-- ko if: editable -->
 					<div class="characters_left" data-bind="charactersLeft: {value: $root[field_name], limit: limit}"></div>
-					<input type="password" class="form-control" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
+					<input type="password" class="form-control" autocomplete="new-password" data-bind="attr: {disabled: $root.freezeForm, id: field_id}, value: $root[field_name],
 																		valueUpdate: 'afterkeydown', characterLimit: limit" />
 				<!-- /ko -->
 				<!-- ko ifnot: editable -->
