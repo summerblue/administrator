@@ -5,7 +5,7 @@
 </style>
 
 <form class="settings_form" data-bind="submit: save">
-	<h2 class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> 站点设置</h2>
+	<h2 class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> <span  data-bind="text: settingsTitle"></span></h2>
     <hr>
 
 	<!-- ko foreach: editFields -->
