@@ -45,7 +45,7 @@ class AdministratorServiceProvider extends ServiceProvider
         //set the locale
         $this->setLocale();
 
-        $this->app['events']->fire('administrator.ready');
+        $this->app['events']->dispatch('administrator.ready');
     }
 
     /**

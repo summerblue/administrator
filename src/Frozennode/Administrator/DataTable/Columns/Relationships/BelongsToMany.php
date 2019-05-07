@@ -25,6 +25,8 @@ class BelongsToMany extends Relationship
         $columnName = $this->getOption('column_name');
 
         $relationship = $model->{$this->getOption('relationship')}();
+        $relatedModel = $relationship->getRelated();
+
         $from_table   = $this->tablePrefix.$model->getTable();
         $field_table  = $columnName.'_'.$from_table;
         $other_table  = $this->tablePrefix.$relationship->getRelated()->getTable();
@@ -33,7 +35,7 @@ class BelongsToMany extends Relationship
         $other_key    = $other_model->getKeyName();
         $int_table    = $this->tablePrefix.$relationship->getTable();
         $int_alias    = $columnName.'_'.$int_table;
-        $column1      = explode('.', $relationship->getForeignKey());
+        $column1      = explode('.', $relatedModel->getForeignKey());
         $column1      = $column1[1];
         $column2      = explode('.', $relationship->getOtherKey());
         $column2      = $column2[1];

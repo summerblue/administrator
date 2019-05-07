@@ -102,7 +102,7 @@ class BelongsTo extends Relationship
                 $last_alias         = $columnName.'_'.$this->tablePrefix.$model->getTable();
                 $joins .= ' LEFT JOIN '.$table.' AS '.$alias.
                             ' ON '.$alias.'.'.$relationship->getOtherKey().
-                                ' = '.$last_alias.'.'.$relationship->getForeignKey();
+                                ' = '.$last_alias.'.'.$relationship_model->getForeignKey();
             }
         }
 
@@ -113,7 +113,7 @@ class BelongsTo extends Relationship
         $from_table         = $this->tablePrefix.$relationship_model->getTable();
         $field_table        = $columnName.'_'.$from_table;
 
-        $where = $this->tablePrefix.$first_model->getTable().'.'.$first_relationship->getForeignKey().
+        $where = $this->tablePrefix.$first_model->getTable().'.'.$relationship_model->getForeignKey().
                     ' = '.
                     $field_table.'.'.$first_relationship->getOtherKey();
 
@@ -131,7 +131,7 @@ class BelongsTo extends Relationship
     {
         $model  = $this->config->getDataModel();
         $nested = $this->getOption('nested');
-        $fk     = $nested['models'][0]->{$nested['pieces'][0]}()->getForeignKey();
+        $fk     = $nested['models'][0]->{$nested['pieces'][0]}()->getRelated()->getForeignKey();
 
         return array($fk => $model->getTable().'.'.$fk);
     }
