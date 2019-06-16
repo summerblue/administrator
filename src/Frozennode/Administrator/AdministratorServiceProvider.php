@@ -1,5 +1,7 @@
 <?php
+
 namespace Frozennode\Administrator;
+
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -9,6 +11,7 @@ use Frozennode\Administrator\Fields\Factory as FieldFactory;
 use Frozennode\Administrator\Config\Factory as ConfigFactory;
 use Frozennode\Administrator\Actions\Factory as ActionFactory;
 use Frozennode\Administrator\DataTable\Columns\Factory as ColumnFactory;
+
 class AdministratorServiceProvider extends ServiceProvider
 {
     /**
@@ -24,12 +27,7 @@ class AdministratorServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../../views', 'administrator');
 
-        // Hack for laravel config cache
-        if (app()->runningInConsole()) {
-            \Config::set('administrator', []);
-        } else {
-            $this->mergeConfigFrom(config_path('administrator.php'), 'administrator');
-        }
+        $this->fixConfigAndRouteCacheIfNeeded();
 
         $this->loadTranslationsFrom(__DIR__.'/../../lang', 'administrator');
         $this->publishes([
@@ -51,12 +49,7 @@ class AdministratorServiceProvider extends ServiceProvider
         include __DIR__.'/../../viewComposers.php';
         include __DIR__.'/../../helpers.php';
 
-        // Hack for laravel config cache
-        if (app()->runningInConsole()) {
-            \Config::set('administrator', []);
-        } else {
-            $this->mergeConfigFrom(config_path('administrator.php'), 'administrator');
-        }
+        $this->fixConfigAndRouteCacheIfNeeded();
 
         // Load route with web middleware
         Route::group([
@@ -124,5 +117,27 @@ class AdministratorServiceProvider extends ServiceProvider
         if ($locale = $this->app->session->get('administrator_locale')) {
             $this->app->setLocale($locale);
         }
+    }
+
+    public function fixConfigAndRouteCacheIfNeeded()
+    {
+        // Hack for laravel config cache
+        $this->mergeConfigFrom(config_path('administrator.php'), 'administrator');
+        if (app()->runningInConsole()) {
+            $configs = \Config::get('administrator');
+            $configs = $this->filter_recursive($configs);
+            \Config::set('administrator', $configs);
+        }
+    }
+
+    public function filter_recursive(&$array)
+    {
+        foreach ( $array as $key => $item) {
+            is_array($item) && $array[$key] = $this->filter_recursive($item);
+            if (is_callable($array[$key])) {
+                unset($array[$key]);
+            }
+        }
+        return $array;
     }
 }
