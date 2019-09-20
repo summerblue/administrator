@@ -40,6 +40,7 @@ class AdminController extends Controller
      */
     public function __construct(Request $request, Session $session)
     {
+
         $this->request = $request;
         $this->session = $session;
 
@@ -418,11 +419,11 @@ class AdminController extends Controller
         //iterate over the supplied constrained fields
         foreach ($this->request->input('fields', array()) as $field) {
             //get the constraints, the search term, and the currently-selected items
-            $constraints   = array_get($field, 'constraints', array());
-            $term          = array_get($field, 'term', array());
-            $type          = array_get($field, 'type', false);
-            $fieldName     = array_get($field, 'field', false);
-            $selectedItems = array_get($field, 'selectedItems', false);
+            $constraints   = \Arr::get($field, 'constraints', array());
+            $term          = \Arr::get($field, 'term', array());
+            $type          = \Arr::get($field, 'type', false);
+            $fieldName     = \Arr::get($field, 'field', false);
+            $selectedItems = \Arr::get($field, 'selectedItems', false);
 
             $response[$fieldName] = $fieldFactory->updateRelationshipOptions($fieldName, $type, $constraints, $selectedItems, $term);
         }
@@ -635,12 +636,15 @@ class AdminController extends Controller
      */
     protected function resolveDynamicFormRequestErrors(Request $request)
     {
+
         try {
             $config       = app('itemconfig');
             $fieldFactory = app('admin_field_factory');
-        } catch (\ReflectionException $e) {
+        } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
             return;
         }
+
+
         if (array_key_exists('form_request', $config->getOptions())) {
             try {
                 $model = $config->getFilledDataModel($request, $fieldFactory->getEditFields(), $request->id);
@@ -656,7 +660,7 @@ class AdminController extends Controller
                     return $errorMessages;
                 }
                 if ($errorsArray) {
-                    return implode('.', array_dot($errorsArray));
+                    return implode('.', \Arr::dot($errorsArray));
                 }
             }
         }
