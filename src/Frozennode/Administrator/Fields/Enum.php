@@ -30,7 +30,7 @@ class Enum extends Field
         //iterate over the options to create the options assoc array
         foreach ($dataOptions as $val => $text) {
             $options['options'][] = array(
-                'id'   => is_numeric($val) ? $text : $val,
+                'id'   => is_string($val) ? $text : $val,
                 'text' => $text,
             );
         }
