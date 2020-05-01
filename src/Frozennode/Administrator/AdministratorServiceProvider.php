@@ -122,10 +122,15 @@ class AdministratorServiceProvider extends ServiceProvider
     public function fixConfigAndRouteCacheIfNeeded()
     {
         // Hack for laravel config cache
-
         $file = config_path('administrator.php');
         if (file_exists($file)) {
-            $this->mergeConfigFrom($file, 'administrator');
+
+            if ($this->app->configurationIsCached()) {
+                $this->app['config']->set('administrator', array_merge(
+                    require $file, $this->app['config']->get('administrator', [])
+                ));
+            }
+
             if (app()->runningInConsole()) {
                 $configs = \Config::get('administrator');
                 $configs = $this->filter_recursive($configs);
