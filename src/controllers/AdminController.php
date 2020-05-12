@@ -440,16 +440,19 @@ class AdminController extends Controller
     {
         //get the stored path of the original
         $path = $this->request->input('path');
-        $data = File::get($path);
-        $file = new SFile($path);
 
-        $headers = array(
-            'Content-Type'        => $file->getMimeType(),
-            'Content-Length'      => $file->getSize(),
-            'Content-Disposition' => 'attachment; filename="'.$file->getFilename().'"',
-        );
+        if (File::exists($path)) {
+            $data = File::get($path);
+            $file = new SFile($path);
 
-        return response()->make($data, 200, $headers);
+            $headers = array(
+                'Content-Type'        => $file->getMimeType(),
+                'Content-Length'      => $file->getSize(),
+                'Content-Disposition' => 'attachment; filename="'.$file->getFilename().'"',
+            );
+
+            return response()->make($data, 200, $headers);
+        }
     }
 
     /**
