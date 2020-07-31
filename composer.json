@@ -15,7 +15,7 @@
 	},
 	"require": {
 		"php": ">=7.0.0",
-		"laravel/framework": "6.*",
+		"laravel/framework": "7.*",
 		"ckeditor/ckeditor": "4.*"
 	},
 	"require-dev": {
