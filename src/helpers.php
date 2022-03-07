@@ -6,7 +6,12 @@ if (!function_exists('setting'))
     {
         if ( ! config()->get($setting_name)) {
             // Decode the settings to an associative array.
-            $site_settings = json_decode(file_get_contents(storage_path("/administrator_settings/$setting_name.json")), true);
+            $file_path = storage_path("/administrator_settings/$setting_name.json");
+            if (file_exists($file_path)) {
+                $site_settings = json_decode(file_get_contents($file_path), true);
+            } else {
+                $site_settings = [];
+            }
             // Add the site settings to the application configuration
             config()->set($setting_name, $site_settings);
         }
@@ -21,7 +26,12 @@ if (!function_exists('admin_setting')) {
     {
         if ( ! config()->get($setting_name)) {
             // Decode the settings to an associative array.
-            $site_settings = json_decode(file_get_contents(storage_path("/administrator_settings/$setting_name.json")), true);
+            $file_path = storage_path("/administrator_settings/$setting_name.json");
+            if (file_exists($file_path)) {
+                $site_settings = json_decode(file_get_contents($file_path), true);
+            } else {
+                $site_settings = [];
+            }
             // Add the site settings to the application configuration
             config()->set($setting_name, $site_settings);
         }
