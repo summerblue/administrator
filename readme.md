@@ -45,6 +45,4 @@ Edit `config/app.php` in `providers` array add provider:
 php artisan vendor:publish --provider="Frozennode\Administrator\AdministratorServiceProvider"
 ```
 
-Read the docs: http://administrator.frozennode.com
-
 -- end
